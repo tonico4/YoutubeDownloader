@@ -19,15 +19,15 @@ def choose_option(link):
   option = input()
 
   if option == "1":
-    print("Descargando.....")
+    print("Descargando audio...")
     download_song(link)
     print("Listo!")
   elif option == "2":
-    print("Descargando.....")
+    print("Descargando video...")
     download_video(link)
     print("Listo!")
   elif option == "3":
-    print("Saliendo......")
+    print("Saliendo...")
     return
   else:
     print("Elija una opción correcta.")
