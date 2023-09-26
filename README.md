@@ -55,6 +55,7 @@ python youdownloader.py
 ## Notas
 Los archivos descargados se guardan en las subcarpetas `./media/audio` y `./media/video`.
 El archivo se guarda con el título del video como nombre de archivo.
+El script se cierra automáticamente al descargar el archivo.
 
 ## Autor
 Nombre: Toni García (@tonicodev)
