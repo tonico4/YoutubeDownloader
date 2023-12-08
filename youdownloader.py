@@ -1,5 +1,8 @@
 from pytube import YouTube
 from pytube.cli import on_progress
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk
 
 def download_video(link):
   video = YouTube(link, on_progress_callback=on_progress)
@@ -11,38 +14,31 @@ def download_song(link):
   title = song.title
   song.streams.get_audio_only().download("./media/audio", f"{title}.mp3")
 
-def choose_option(link):
-  print("""Selecciona una opción:
-  1 - Audio
-  2 - Video
-  3 - Salir""")
-  
-  option = input()
-
-  if option == "1":
-    print("Descargando audio...")
-    download_song(link)
-    print("Descargado con éxito!")
-  elif option == "2":
-    print("Descargando video...")
-    download_video(link)
-    print("Descargado con éxito!")
-  elif option == "3":
-    print("Saliendo...")
-    print("¡Éxito al salir!")
-    return
-  else:
-    print("Elija una opción correcta.")
-    return choose_option(link)
-
 def main():
-  # Obtener link
-  print("Pega el link del video")
+  root = Tk()
+  root.title("YouDownloader")
+  root.geometry("600x500")
+  root.resizable(FALSE, FALSE)
 
-  link = input()
+  input_frame = Frame(root)
+  input_frame.pack(pady=30)
 
-  # Elegir opción
-  choose_option(link)
+  url_label = Label(input_frame, text="URL del video:")
+  url_label.pack(side="left", padx=7)
+
+  input = ttk.Entry(input_frame, width=45)
+  input.pack(side="left")
+
+  buttons_frame = Frame(root)
+  buttons_frame.pack(pady=10)
+
+  download_audio_btn = tk.Button(buttons_frame, text="Descargar audio", command=download_song)
+  download_audio_btn.pack(side="left", padx=20)
+
+  download_video_btn = tk.Button(buttons_frame, text="Descargar video", command=download_video)
+  download_video_btn.pack(side="left", padx=20)
+
+  root.mainloop()
 
 if __name__ == "__main__":
   main()
