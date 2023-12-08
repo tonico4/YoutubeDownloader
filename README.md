@@ -14,13 +14,13 @@ Este es un sencillo script de Python que utiliza la biblioteca Pytube para desca
 python youdownloader.py
 ```
 
-3. Se abrirá una interfaz gráfica donde podrás ingresar el enlace del video de YouTube que deseas descargar.
+2. Se abrirá una interfaz gráfica donde podrás ingresar el enlace del video de YouTube que deseas descargar.
 
-4. Luego, selecciona si deseas descargar el video o solo el audio haciendo clic en los botones correspondientes.
+3. Luego, selecciona si deseas descargar el video o solo el audio haciendo clic en los botones correspondientes.
 
-5. Se abrirá una ventana de diálogo para que elijas la carpeta de destino para la descarga.
+4. Se abrirá una ventana de diálogo para que elijas la carpeta de destino para la descarga.
 
-6. La descarga comenzará y verás un mensaje indicando el progreso.
+5. La descarga comenzará y verás un mensaje indicando el progreso.
 
 ## Autor
 Nombre: Toni García (@tonicodev)
