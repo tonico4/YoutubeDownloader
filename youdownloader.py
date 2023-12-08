@@ -2,34 +2,40 @@ from pytube import YouTube
 from pytube.cli import on_progress
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk, filedialog
+from tkinter import ttk, filedialog, messagebox
 from tkinter.font import Font
 
 def main():
   def download_video():
     url = input_url.get()
-    video = YouTube(url=url, on_progress_callback=on_progress)
-    streams = video.streams.filter(progressive=True, file_extension="mp4").get_highest_resolution()
+    try:
+      video = YouTube(url=url, on_progress_callback=on_progress)
+      streams = video.streams.filter(progressive=True, file_extension="mp4").get_highest_resolution()
 
-    dir = filedialog.askdirectory()
-    if dir:
-      info_message.config(text="Descargando.....")
-      streams.download(output_path=dir)
-      info_message.config(text="Descarga de video completada!")
-      input_url.delete(0, END)
+      dir = filedialog.askdirectory()
+      if dir:
+        info_message.config(text="Descargando.....")
+        streams.download(output_path=dir)
+        info_message.config(text="Descarga de video completada!")
+        input_url.delete(0, END)
+    except Exception as e:
+      messagebox.showerror("Error", f"Error: {e}")
 
   def download_song():
     url = input_url.get()
-    video = YouTube(url=url, on_progress_callback=on_progress)
-    title = video.title
-    streams = video.streams.get_audio_only()
+    try:
+      video = YouTube(url=url, on_progress_callback=on_progress)
+      title = video.title
+      streams = video.streams.get_audio_only()
 
-    dir = filedialog.askdirectory()
-    if dir:
-      info_message.config(text="Descargando.....")
-      streams.download(output_path=dir, filename=f"{title}.mp3")
-      info_message.config(text="Descarga de audio completada!")
-      input_url.delete(0, END)
+      dir = filedialog.askdirectory()
+      if dir:
+        info_message.config(text="Descargando.....")
+        streams.download(output_path=dir, filename=f"{title}.mp3")
+        info_message.config(text="Descarga de audio completada!")
+        input_url.delete(0, END)
+    except Exception as e:
+      messagebox.showerror("Error", f"Error: {e}")
 
   root = Tk()
   root.title("YouDownloader")
