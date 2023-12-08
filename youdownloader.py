@@ -9,7 +9,7 @@ def main():
   def download_video():
     url = input_url.get()
     video = YouTube(url=url, on_progress_callback=on_progress)
-    streams = video.streams.filter(progressive=True, file_extension="mp4").first()
+    streams = video.streams.filter(progressive=True, file_extension="mp4").get_highest_resolution()
 
     dir = filedialog.askdirectory()
     if dir:
